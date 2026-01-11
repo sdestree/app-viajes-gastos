@@ -365,12 +365,11 @@ h2 {
 
 .trip-name {
   font-size: 14px;
-  font-weight: 500;
+  font-weight: 600;
 }
 
 /* CÓDIGO */
 .trip-code-box {
-  margin-top: 16px;
   background-color: #F9FAFB;
   border-radius: 12px;
   padding: 12px;

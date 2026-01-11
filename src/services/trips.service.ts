@@ -76,10 +76,26 @@ export async function joinTripByCode(
    Salirse de un viaje
 ========================= */
 
-export async function leaveTrip(tripId: string, userId: string) {
-  const ref = doc(db, "trips", tripId);
 
-  await updateDoc(ref, {
-    participants: arrayRemove(userId),
+
+export async function updateTripName(tripId: string, name: string) {
+  await updateDoc(doc(db, "trips", tripId), {
+    name,
   });
 }
+
+export async function leaveTrip(tripId: string, userId: string) {
+  await updateDoc(doc(db, "trips", tripId), {
+    members: arrayRemove(userId),
+  });
+}
+
+// ARCHIVAR VIAJES
+
+export async function archiveTrip(tripId: string) {
+  await updateDoc(doc(db, "trips", tripId), {
+    isArchived: true,
+    archivedAt: new Date(),
+  });
+}
+

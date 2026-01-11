@@ -125,11 +125,17 @@ export default function TripPage() {
       )}
 
       <TripSettingsModal
-  isOpen={showSettings}
-  onClose={() => setShowSettings(false)}
-  tripName={trip.name}
-  joinCode={trip.joinCode}
-/>
+        isOpen={showSettings}
+        onClose={() => setShowSettings(false)}
+        tripId={trip.id}
+        tripName={trip.name}
+        joinCode={trip.joinCode}
+        isOwner={trip.createdBy === user.uid}
+        onTripUpdated={() => {
+          setTrip({ ...trip, name: trip.name });
+        }}
+      />
+
 
     </div>
   );

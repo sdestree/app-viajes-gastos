@@ -96,7 +96,7 @@ export default function ExpensesTab({
                     deleteExpense(expense.id).then(loadExpenses)
                   }
                 >
-                  <i className="bi bi-bag-x"></i>
+                  <i className="bi bi-trash3"></i>
                 </button>
               
             </div>
