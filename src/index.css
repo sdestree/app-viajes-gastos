@@ -666,3 +666,16 @@ h2 {
 .btn-logout:active {
   transform: scale(0.98);
 }
+
+
+
+/*ARREGLO DE ZOOMS RAROS DE IPHONE*/
+html, body {
+  width: 100%;
+  max-width: 100%;
+  overflow-x: hidden;
+}
+
+input, textarea, select, button {
+  font-size: 16px;
+}
