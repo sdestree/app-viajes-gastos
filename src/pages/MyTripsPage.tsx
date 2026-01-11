@@ -83,17 +83,17 @@ export default function MyTripsPage() {
 
       </main>
       {showCreateModal && (
-  <CreateTripModal
-    onClose={() => setShowCreateModal(false)}
-    onCreated={loadTrips}
-  />
-)}
-{showJoinModal && (
-  <JoinTripModal
-    onClose={() => setShowJoinModal(false)}
-    onJoined={loadTrips}
-  />
-)}
+        <CreateTripModal
+          onClose={() => setShowCreateModal(false)}
+          onCreated={loadTrips}
+        />
+      )}
+      {showJoinModal && (
+        <JoinTripModal
+          onClose={() => setShowJoinModal(false)}
+          onJoined={loadTrips}
+        />
+      )}
 
 
     </div>
