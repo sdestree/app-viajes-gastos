@@ -1,0 +1,269 @@
+/* ===== CONTENEDOR ===== */
+.expenses-tab {
+  padding: 16px;
+}
+
+/* ===== HEADER ===== */
+.expenses-header {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  margin-bottom: 16px;
+}
+
+.expenses-header h3 {
+  margin: 0;
+  font-size: 1.1rem;
+}
+
+.total {
+  font-size: 1.4rem;
+  font-weight: 600;
+}
+
+/* ===== BOTÓN AGREGAR ===== */
+/* ===== ADD BUTTON ===== */
+.add-expense-btn.full {
+  width: 100%;
+  margin: 12px 0 20px;
+  padding: 14px;
+  font-size: 1rem;
+  border-radius: 14px;
+  background: #000;
+  color: #fff;
+  border: none;
+}
+
+
+/* ===== LISTA ===== */
+.expenses-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.expense-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 14px;
+  border-radius: 12px;
+  background: #f6f6f6;
+  margin-bottom: 10px;
+}
+
+.expense-item p {
+  margin: 4px 0 0;
+  font-size: 0.85rem;
+  color: #666;
+}
+
+/* ===== DERECHA ===== */
+.expense-right {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.amount {
+  font-weight: 600;
+}
+
+/* ===== BORRAR ===== */
+.delete-btn {
+  background: none;
+  border: none;
+  color: #d00;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+/* ===== MODAL ===== */
+.modal-backdrop {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.45);
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+  z-index: 1000;
+}
+
+.modal {
+  background: #fff;
+  width: 100%;
+  max-width: 420px;
+  border-radius: 16px 16px 0 0;
+  padding: 20px;
+  animation: slideUp 0.25s ease-out;
+}
+
+/* ===== FORM ===== */
+.expense-form {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.expense-form h3 {
+  margin: 0 0 8px;
+}
+
+.expense-form label {
+  font-size: 0.85rem;
+  color: #555;
+}
+
+.expense-form input,
+.expense-form select {
+  padding: 10px;
+  border-radius: 10px;
+  border: 1px solid #ddd;
+}
+
+/* ===== ACCIONES ===== */
+.expense-form-actions {
+  display: flex;
+  gap: 10px;
+  margin-top: 10px;
+}
+
+.expense-form-actions button {
+  flex: 1;
+  padding: 10px;
+  border-radius: 10px;
+  border: none;
+  cursor: pointer;
+}
+
+.expense-form-actions .secondary {
+  background: #eee;
+}
+
+@keyframes slideUp {
+  from {
+    transform: translateY(100%);
+  }
+  to {
+    transform: translateY(0);
+  }
+}
+
+/* ===== CHART ===== */
+.expenses-chart {
+  display: flex;
+  gap: 16px;
+  align-items: center;
+  margin: 16px 0;
+}
+
+.pie {
+  width: 120px;
+  height: 120px;
+  aspect-ratio: 1 / 1;
+  border-radius: 50%;
+  transform: rotate(-90deg);
+}
+
+
+.chart-legend {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  font-size: 0.85rem;
+}
+
+.chart-legend li {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  margin-bottom: 6px;
+}
+
+.dot {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+}
+
+/* ===== CHART CARD ===== */
+.chart-card {
+  background: #f7f7f7;
+  border-radius: 16px;
+  padding: 16px;
+  margin: 16px 0;
+}
+
+.chart-card h4 {
+  margin: 0 0 12px;
+  font-size: 1rem;
+}
+
+/* ===== CHART ===== */
+.chart-container {
+  position: relative;
+  width: 100%;
+  height: 220px;
+}
+
+/* ===== SUMMARY CARD ===== */
+.expenses-summary-card {
+  background: #f7f7f7;
+  border-radius: 16px;
+  padding: 16px;
+  margin-bottom: 12px;
+}
+
+.expenses-summary-card .label {
+  font-size: 0.85rem;
+  color: #666;
+}
+
+.expenses-summary-card .total {
+  display: block;
+  font-size: 1.6rem;
+  font-weight: 700;
+  margin-top: 4px;
+}
+
+
+/* ============================= */
+/* TRIP TABS (SEGMENTED CONTROL) */
+/* ============================= */
+
+.trip-tabs {
+  margin: 16px;
+  padding: 4px;
+
+  display: flex;
+
+  background: #ededed;
+  border-radius: 14px;
+}
+
+/* TAB BASE */
+.trip-tabs .tab {
+  flex: 1;
+
+  background: transparent;
+  border: none;
+
+  padding: 8px 0;
+  border-radius: 10px;
+
+  font-size: 0.85rem;
+  font-weight: 500;
+  color: #555;
+
+  cursor: pointer;
+  transition: background 0.2s ease, color 0.2s ease;
+}
+
+/* TAB ACTIVA */
+.trip-tabs .tab.active {
+  background: white;
+  color: #111;
+  font-weight: 600;
+
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+}

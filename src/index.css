@@ -1,0 +1,668 @@
+/* RESET BÁSICO */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html, body {
+  height: 100%;
+}
+
+body {
+  font-family: 'Inter', system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
+  background-color: #F8FAFC;
+  color: #111827;
+}
+
+/* VARIABLES DE DISEÑO */
+:root {
+  --primary: #2563EB;
+  --primary-dark: #1E40AF;
+
+  --bg: #F8FAFC;
+  --card: #FFFFFF;
+  --border: #E5E7EB;
+
+  --text-primary: #111827;
+  --text-secondary: #6B7280;
+
+  --success: #22C55E;
+  --danger: #EF4444;
+  --info-bg: #EFF6FF;
+
+  --radius-lg: 16px;
+  --radius-md: 12px;
+  --radius-sm: 8px;
+}
+
+/* CONTENEDOR MOBILE */
+.app-container {
+  max-width: 420px;
+  margin: 0 auto;
+  min-height: 100vh;
+  background-color: var(--bg);
+}
+
+/* HEADER AZUL */
+.header {
+  background: linear-gradient(
+    180deg,
+    var(--primary),
+    var(--primary-dark)
+  );
+  color: white;
+  padding: 20px;
+  border-bottom-left-radius: 24px;
+  border-bottom-right-radius: 24px;
+}
+
+/* TÍTULOS */
+h1 {
+  font-size: 20px;
+  font-weight: 600;
+}
+
+h2 {
+  font-size: 16px;
+  font-weight: 600;
+}
+
+/* TEXTO SECUNDARIO */
+.text-muted {
+  color: var(--text-secondary);
+  font-size: 14px;
+}
+
+/* CARD */
+.card {
+  background-color: var(--card);
+  border-radius: var(--radius-lg);
+  padding: 16px;
+  box-shadow: 0 1px 4px rgba(0,0,0,0.05);
+}
+
+/* BOTÓN PRINCIPAL */
+.btn-primary {
+  background: linear-gradient(
+    180deg,
+    #111827,
+    #000000
+  );
+  color: white;
+  border: none;
+  width: 100%;
+  padding: 14px;
+  border-radius: 999px;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+/* BOTÓN SECUNDARIO */
+.btn-outline {
+  background: white;
+  border: 1px solid var(--border);
+  padding: 14px;
+  width: 100%;
+  border-radius: 999px;
+  font-weight: 500;
+  cursor: pointer;
+}
+
+/* SEGMENTED CONTROL (Mis viajes / Perfil) */
+.segmented {
+  display: flex;
+  background: #EDEDED;
+  border-radius: 999px;
+  padding: 4px;
+  
+}
+
+.segmented button {
+  flex: 1;
+  border: none;
+  background: transparent;
+  padding: 8px;
+  border-radius: 999px;
+  font-weight: 500;
+}
+
+.segmented button.active {
+  background: white;
+}
+
+/*MyTripsPage*/
+
+.page-content {
+  padding: 16px;
+}
+
+/* ACCIONES */
+.actions {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  margin: 20px 0;
+}
+
+/* LISTA DE VIAJES */
+.trips-list {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+/* CARD VIAJE */
+.trip-card {
+  display: flex;
+  align-items: center;
+  background-color: var(--card);
+  border-radius: var(--radius-lg);
+  padding: 14px;
+  cursor: pointer;
+  box-shadow: 0 1px 4px rgba(0,0,0,0.05);
+}
+
+.trip-icon {
+  width: 42px;
+  height: 42px;
+  border-radius: 12px;
+  background: linear-gradient(180deg, #7C83FF, #8B5CF6);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  margin-right: 12px;
+  font-size: 18px;
+}
+
+.trip-info {
+  flex: 1;
+}
+
+.trip-info h2 {
+  font-size: 15px;
+  font-weight: 600;
+}
+
+.trip-arrow {
+  font-size: 20px;
+  color: var(--text-secondary);
+}
+
+/* PERFIL */
+.profile-card {
+  margin-top: 20px;
+}
+
+.profile-header {
+  display: flex;
+  align-items: center;
+  margin-bottom: 16px;
+}
+
+.avatar {
+  width: 56px;
+  height: 56px;
+  border-radius: 50%;
+  background: linear-gradient(180deg, #7C83FF, #8B5CF6);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  font-size: 22px;
+  font-weight: 600;
+  margin-right: 12px;
+}
+
+.profile-info h2 {
+  font-size: 16px;
+}
+
+.edit-link {
+  font-size: 13px;
+  color: var(--text-secondary);
+  cursor: pointer;
+}
+
+/* FORM */
+.profile-form {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.profile-form label {
+  font-size: 13px;
+  color: var(--text-secondary);
+}
+
+.profile-form input {
+  padding: 12px;
+  border-radius: var(--radius-md);
+  border: 1px solid var(--border);
+  font-size: 14px;
+}
+
+/* ABOUT */
+.about-card {
+  margin-top: 16px;
+  background-color: var(--info-bg);
+}
+
+/* ============================= */
+/* TRIP HEADER */
+/* ============================= */
+
+.trip-header {
+  background: linear-gradient(180deg, #2563eb 0%, #1d4ed8 100%);
+  color: white;
+
+  padding: 16px;
+  padding-top: 20px;
+
+  border-bottom-left-radius: 20px;
+  border-bottom-right-radius: 20px;
+
+  display: grid;
+  grid-template-columns: auto 1fr auto;
+  align-items: center;
+  gap: 12px;
+}
+
+/* VOLVER */
+.trip-back {
+  background: none;
+  border: none;
+  color: white;
+  font-size: 1.1rem;
+  cursor: pointer;
+  padding: 0;
+}
+
+/* INFO CENTRAL */
+.trip-header-info {
+  text-align: center;
+  line-height: 1.2;
+}
+
+.trip-header-info h2 {
+  margin: 0;
+  font-size: 1.05rem;
+  font-weight: 600;
+}
+
+.trip-header-info p {
+  margin: 4px 0 0;
+  font-size: 0.75rem;
+  opacity: 0.9;
+  color: white;
+}
+
+/* SETTINGS */
+.trip-settings {
+  background: none;
+  border: none;
+  color: white;
+  font-size: 1.1rem;
+  cursor: pointer;
+}
+
+/* =====================
+   SETTINGS MODAL 
+===================== */
+
+.modal-backdrop {
+  position: fixed;
+  inset: 0;
+  background-color: rgba(0, 0, 0, 0.55);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+}
+
+.modal-settings {
+  width: 90%;
+  max-width: 340px;
+  background-color: white;
+  border-radius: 16px;
+  padding: 16px;
+  box-shadow: 0 20px 40px rgba(0,0,0,0.2);
+}
+
+/* HEADER */
+.modal-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 16px;
+}
+
+.modal-header h2 {
+  font-size: 15px;
+  font-weight: 600;
+}
+
+.modal-close {
+  background: none;
+  border: none;
+  font-size: 18px;
+  cursor: pointer;
+  color: var(--text-secondary);
+}
+
+/* SECCIÓN */
+.modal-section label,
+.trip-code-box label {
+  font-size: 12px;
+  color: var(--text-secondary);
+  display: block;
+  margin-bottom: 4px;
+}
+
+.trip-name {
+  font-size: 14px;
+  font-weight: 500;
+}
+
+/* CÓDIGO */
+.trip-code-box {
+  margin-top: 16px;
+  background-color: #F9FAFB;
+  border-radius: 12px;
+  padding: 12px;
+}
+
+.trip-code-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background-color: white;
+  border-radius: 10px;
+  padding: 10px 12px;
+  border: 1px solid var(--border);
+  margin-top: 6px;
+}
+
+.trip-code-value {
+  font-size: 16px;
+  font-weight: 600;
+  letter-spacing: 1px;
+}
+
+.copy-btn {
+  background: none;
+  border: none;
+  font-size: 16px;
+  cursor: pointer;
+}
+
+.trip-code-hint {
+  margin-top: 8px;
+  font-size: 12px;
+  color: var(--text-secondary);
+}
+
+.modal-backdrop {
+  position: fixed;
+  inset: 0;
+  background-color: rgba(0, 0, 0, 0.7); /* más oscuro */
+  z-index: 9999;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* =====================
+   BALANCE TAB
+===================== */
+
+.balance-tab {
+  padding: 16px;
+}
+
+/* SUMMARY */
+.balance-summary {
+  background-color: #ECFDF3;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  margin-bottom: 20px;
+}
+
+.balance-label {
+  font-size: 13px;
+  color: var(--text-secondary);
+}
+
+.balance-amount {
+  font-size: 20px;
+  font-weight: 600;
+}
+
+/* SECCIONES */
+.section-title {
+  font-size: 15px;
+  font-weight: 600;
+  margin: 16px 0 8px;
+}
+
+/* LISTA BALANCE */
+.balance-list {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.balance-item {
+  background-color: var(--card);
+  border-radius: var(--radius-lg);
+  padding: 14px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.amount-positive {
+  color: var(--success);
+  font-weight: 600;
+}
+
+.amount-negative {
+  color: var(--danger);
+  font-weight: 600;
+}
+
+.amount-zero {
+  color: var(--text-secondary);
+}
+
+/* AJUSTES */
+.settlements-list {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  margin-top: 8px;
+}
+
+.settlement-card {
+  background-color: var(--info-bg);
+  border-radius: var(--radius-lg);
+  padding: 12px;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.settlement-card .arrow {
+  color: var(--text-secondary);
+}
+
+.settlement-amount {
+  margin-left: auto;
+  font-weight: 600;
+  color: var(--primary);
+}
+
+/* =====================
+   MODAL CREATE & JOIN
+===================== */
+
+.modal-backdrop {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.55);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+}
+
+.modal-card {
+  background: #fff;
+  width: 90%;
+  max-width: 400px;
+  border-radius: 16px;
+  padding: 1.5rem;
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.2);
+}
+
+.modal-card h3 {
+  margin-bottom: 1rem;
+}
+
+.modal-card input {
+  width: 100%;
+  padding: 0.75rem;
+  border-radius: 10px;
+  border: 1px solid #e5e7eb;
+  margin-bottom: 1.25rem;
+}
+
+.modal-actions {
+  display: flex;
+  gap: 0.75rem;
+  justify-content: flex-end;
+}
+
+/* =========================
+   AUTH (Login / Register)
+   ========================= */
+
+.auth-page {
+  min-height: 100vh;
+  background: linear-gradient(180deg, #2563eb 0%, #1e40af 100%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 1rem;
+}
+
+.auth-card {
+  background: #ffffff;
+  width: 100%;
+  max-width: 420px;
+  border-radius: 20px;
+  padding: 2rem 1.75rem;
+  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.25);
+}
+
+.auth-title {
+  font-size: 1.5rem;
+  font-weight: 700;
+  margin-bottom: 0.25rem;
+  text-align: center;
+}
+
+.auth-subtitle {
+  font-size: 0.95rem;
+  color: #6b7280;
+  text-align: center;
+  margin-bottom: 1.5rem;
+}
+
+.auth-form {
+  display: flex;
+  flex-direction: column;
+  gap: 0.9rem;
+}
+
+.auth-form input {
+  width: 100%;
+  padding: 0.75rem 0.85rem;
+  border-radius: 12px;
+  border: 1px solid #e5e7eb;
+  font-size: 0.95rem;
+}
+
+.auth-form input:focus {
+  outline: none;
+  border-color: #2563eb;
+  box-shadow: 0 0 0 2px rgba(37, 99, 235, 0.15);
+}
+
+.auth-button {
+  margin-top: 0.5rem;
+  width: 100%;
+}
+
+.auth-error {
+  font-size: 0.85rem;
+  color: #dc2626;
+  text-align: center;
+}
+
+.auth-footer {
+  margin-top: 1.25rem;
+  font-size: 0.85rem;
+  text-align: center;
+  color: #6b7280;
+}
+
+.auth-footer a {
+  color: #2563eb;
+  font-weight: 600;
+  text-decoration: none;
+}
+
+.auth-footer a:hover {
+  text-decoration: underline;
+}
+
+/* =========================
+   LOGOUT
+   ========================= */
+
+.logout-card {
+  padding: 0.75rem;
+  background-color: #F8FAFC;
+  margin-top: 10px;
+}
+
+.btn-logout {
+  width: 100%;
+  padding: 0.75rem;
+  border-radius: 12px;
+  border: 1px solid #c7c7c7;
+  background: #fff;
+  color: #6B7280;
+  font-weight: 600;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  cursor: pointer;
+  transition: background 0.2s ease, transform 0.1s ease;
+}
+
+.btn-logout:hover {
+  background: #fee2e2;
+}
+
+.btn-logout:active {
+  transform: scale(0.98);
+}
