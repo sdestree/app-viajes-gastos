@@ -8,7 +8,7 @@ import {
   doc,
   arrayUnion,
   Timestamp,
-  arrayRemove
+  arrayRemove,
 } from "firebase/firestore";
 import { db } from "../firebase/firebase";
 import type { Trip } from "../types/trip";
@@ -30,6 +30,7 @@ export async function createTrip(
     members: [userId],
     joinCode: generateJoinCode(),
     createdAt: Timestamp.now(),
+    archivedBy: {},
   });
 }
 
@@ -44,10 +45,13 @@ export async function getUserTrips(userId: string): Promise<Trip[]> {
 
   const snapshot = await getDocs(q);
 
-  return snapshot.docs.map((docSnap) => ({
-    id: docSnap.id,
-    ...(docSnap.data() as Omit<Trip, "id">),
-  }));
+  return snapshot.docs
+    .map((docSnap) => ({
+      id: docSnap.id,
+      ...(docSnap.data() as Omit<Trip, "id">),
+    }))
+    // 🔥 FILTRO CLAVE
+    .filter((trip) => !trip.archivedBy?.[userId]);
 }
 
 /* =========================
@@ -73,29 +77,28 @@ export async function joinTripByCode(
 }
 
 /* =========================
-   Salirse de un viaje
+   Actualizar nombre
 ========================= */
-
-
-
 export async function updateTripName(tripId: string, name: string) {
   await updateDoc(doc(db, "trips", tripId), {
     name,
   });
 }
 
+/* =========================
+   Salirse de un viaje
+========================= */
 export async function leaveTrip(tripId: string, userId: string) {
   await updateDoc(doc(db, "trips", tripId), {
     members: arrayRemove(userId),
   });
 }
 
-// ARCHIVAR VIAJES
-
-export async function archiveTrip(tripId: string) {
+/* =========================
+   Archivar viaje (por usuario)
+========================= */
+export async function archiveTrip(tripId: string, userId: string) {
   await updateDoc(doc(db, "trips", tripId), {
-    isArchived: true,
-    archivedAt: new Date(),
+    [`archivedBy.${userId}`]: true,
   });
 }
-

@@ -5,5 +5,5 @@ export type Trip = {
   members: string[];   // array de uid
   joinCode: string;
   createdAt: Date;
-  isArchived?: boolean;
+  archivedBy?: Record<string, boolean>;
 };

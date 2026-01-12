@@ -66,21 +66,22 @@ export default function TripSettingsModal({
   }
 
   async function handleArchiveTrip() {
-    if (!isOwner) return;
+  if (!isOwner || !user) return;
 
-    const ok = confirm(
-      "Este viaje se archivará y dejará de aparecer en tus viajes.\n¿Continuar?"
-    );
+  const ok = confirm(
+    "Este viaje se archivará y dejará de aparecer en tus viajes.\n¿Continuar?"
+  );
 
-    if (!ok) return;
+  if (!ok) return;
 
-    try {
-      await archiveTrip(tripId);
-      window.location.href = "/";
-    } catch (err) {
-      console.error("Error archivando viaje", err);
-    }
+  try {
+    await archiveTrip(tripId, user.uid);
+    window.location.href = "/";
+  } catch (err) {
+    console.error("Error archivando viaje", err);
   }
+}
+
 
 
   return (
