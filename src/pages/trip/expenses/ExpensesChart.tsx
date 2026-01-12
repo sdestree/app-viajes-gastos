@@ -36,8 +36,9 @@ export default function ExpensesChart({ data, usersMap }: Props) {
           "#FF0054",
           "#FF5400",
           "#FFBD00",
-          "#06B6D4",
-          "#A855F7",
+          "#C1FF72",
+          "#7ED957",
+          "#0097B2"
         ],
         borderWidth: 0,
       },
