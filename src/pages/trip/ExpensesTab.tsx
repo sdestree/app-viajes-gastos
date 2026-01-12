@@ -28,9 +28,16 @@ export default function ExpensesTab({
 
   async function loadExpenses() {
     const data = await getTripExpenses(tripId);
-    setExpenses(data);
+
+    const sorted = [...data].sort(
+      (a, b) => new Date(b.createdAt).getTime() - new Date(a.createdAt).getTime()
+    );
+
+
+    setExpenses(sorted);
     setLoading(false);
   }
+
 
   useEffect(() => {
     loadExpenses();
@@ -53,9 +60,9 @@ export default function ExpensesTab({
       {/* Header */}
       <div className="expenses-header">
         <div className="expenses-summary-card">
-  <span className="label">Total gastado</span>
-  <span className="total">${total}</span>
-</div>
+          <span className="label">Total gastado</span>
+          <span className="total">${total}</span>
+        </div>
         <button
           className="btn-primary"
           onClick={() => setShowAddModal(true)}
@@ -76,11 +83,16 @@ export default function ExpensesTab({
           <li key={expense.id} className="expense-item">
             <div>
               <strong>{expense.description}</strong>
-              <p>
+              <p className="expense-meta">
                 Pagó{" "}
                 <strong>
                   {usersMap[expense.paidBy] ?? "Desconocido"}
-                </strong>
+                </strong>{" "}
+                →{" "}
+                {expense.createdAt.toLocaleDateString("es-AR", {
+                  day: "numeric",
+                  month: "numeric",
+                })}
               </p>
             </div>
 
@@ -89,16 +101,16 @@ export default function ExpensesTab({
                 ${expense.amount}
               </span>
 
-              
-                <button
-                  className="delete-btn"
-                  onClick={() =>
-                    deleteExpense(expense.id).then(loadExpenses)
-                  }
-                >
-                  <i className="bi bi-trash3"></i>
-                </button>
-              
+
+              <button
+                className="delete-btn"
+                onClick={() =>
+                  deleteExpense(expense.id).then(loadExpenses)
+                }
+              >
+                <i className="bi bi-trash3"></i>
+              </button>
+
             </div>
           </li>
         ))}
